@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Saidbar from './Saidbar';
 import { mijozlar_url } from '../Utilits/url';
 import { apiClient } from '../Utilits/apiservice';
+import { Link } from 'react-router-dom';
 
 const Mijozlar = () => {
   const [employees, setEmployees] = useState([]);
@@ -63,9 +64,9 @@ const Mijozlar = () => {
               className="px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
             />
             
-            <button className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-5 py-2 rounded-lg shadow-md transition duration-300">
+           <Link to={'/mijoz_qushish'}> <button className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-5 py-2 rounded-lg shadow-md transition duration-300">
               + Mijoz qo‘shish
-            </button>
+            </button></Link>
           </div>
         </div>
 

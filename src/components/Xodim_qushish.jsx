@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompany } from '../features/company/companySlice';
+import { useNavigate } from 'react-router-dom';
 
 const CompanyInfo = ({ onBranchSelect }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.company);
   const [selectedBranchId, setSelectedBranchId] = useState('');
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchCompany());
   }, [dispatch]);
@@ -134,7 +135,6 @@ const AddEmployeeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(
         'https://api.noventer.uz/api/v1/employee/employees/',
@@ -166,6 +166,7 @@ const AddEmployeeForm = () => {
         official_salary: '',
       });
       setSelectedBranchId('');
+      navigate("/xodimlar"); 
     } catch (error) {
       console.error('Error:', error.response || error.message);
       alert('Xodimni qo‘shishda xatolik yuz berdi.');
