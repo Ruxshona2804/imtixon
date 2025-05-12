@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompany } from '../features/company/companySlice';
 import Saidbar from './Saidbar';
 import { Link } from 'react-router-dom';
-
+import Pagination from './Pagination';
 const CompanyInfo = ({ branches, onBranchChange }) => {
   return (
     <div className="relative">
@@ -30,7 +30,7 @@ const CompanyInfo = ({ branches, onBranchChange }) => {
   );
 };
 
-const EmployeeList = () => {
+const Xodimlar = () => {
   const [employees, setEmployees] = useState([]);
   const [loadingEmployees, setLoadingEmployees] = useState(true);
   const [errorEmployees, setErrorEmployees] = useState(null);
@@ -39,28 +39,27 @@ const EmployeeList = () => {
   const dispatch = useDispatch();
   const { data: companyData, loading: loadingCompany, error: errorCompany } = useSelector((state) => state.company);
   const branches = companyData?.branches || [];
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   useEffect(() => {
     dispatch(fetchCompany());
   }, [dispatch]);
 
+ 
+  
+  // update employee fetch effect
   useEffect(() => {
     const fetchEmployees = async () => {
-      if (!token) {
-        setErrorEmployees('Token not found');
-        setLoadingEmployees(false);
-        return;
-      }
-      if (!selectedBranchId) {
+      if (!token || !selectedBranchId) {
         setEmployees([]);
         setLoadingEmployees(false);
         return;
       }
-
+  
       try {
         setLoadingEmployees(true);
         const response = await axios.get(
-          `https://api.noventer.uz/api/v1/employee/employees/branch/${selectedBranchId}/`,
+          `https://api.noventer.uz/api/v1/employee/employees/branch/${selectedBranchId}/?page=${currentPage}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -68,16 +67,24 @@ const EmployeeList = () => {
           }
         );
         setEmployees(response.data.results);
+        const totalCount = response.data.count;
+        const perPage = 5;
+        setTotalPages(Math.ceil(totalCount / perPage));
       } catch (err) {
         setErrorEmployees(err.response ? err.response.data : err.message);
       } finally {
         setLoadingEmployees(false);
       }
     };
-
+  
     fetchEmployees();
-  }, [token, selectedBranchId]);
-
+  }, [token, selectedBranchId, currentPage]);
+  
+  // page o'zgarganda:
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  
   const handleBranchChange = (event) => {
     setSelectedBranchId(event.target.value);
   };
@@ -89,10 +96,10 @@ const EmployeeList = () => {
 
   return (
     <div className="flex">
-      <div className='w-[30%] border border-gray-200'>
+      <div className='w-[20%] border border-gray-200'>
         <Saidbar />
       </div>
-      <div className="w-[70%] p-6">
+      <div className="w-[80%] p-6">
         <div className="flex justify-between items-center gap-3 mb-4">
           <h2 className="text-2xl font-semibold">Xodimlar ro'yxati</h2>
           <div className='flex items-center gap-4'>
@@ -143,7 +150,14 @@ const EmployeeList = () => {
       </div>
     </div>
   );
+  {employees.length > 0 && (
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={handlePageChange}
+    />
+  )}
 };
 
-export default EmployeeList;
+export default Xodimlar;
 

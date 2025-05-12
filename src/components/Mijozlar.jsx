@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Saidbar from './Saidbar';
-import CompanyInfo from './CompanyInfo';
 import { mijozlar_url } from '../Utilits/url';
 import { apiClient } from '../Utilits/apiservice';
 
@@ -47,12 +46,12 @@ const Mijozlar = () => {
 
   return (
     <div className="flex bg-gray-100 min-h-screen">
-      <div className='w-[30%]'>
+      <div className='w-[20%]'>
         <Saidbar />
       </div>
 
   
-      <div className="w-[70%] p-6 space-y-6">
+      <div className="w-[80%] p-6 space-y-6">
         <div className="flex justify-between items-center gap-4 flex-wrap">
           <h2 className="text-3xl font-bold text-gray-800">Mijozlar ro'yxati</h2>
           <div className='flex items-center gap-5'>

@@ -80,10 +80,10 @@ const ShiftList = () => {
 
   return (
     <div className="flex">
-      <div className="w-[30%] border">
+      <div className="w-[20%] border">
         <Saidbar />
       </div>
-      <div className="w-[70%] p-6">
+      <div className="w-[80%] p-6">
         <div className="flex justify-between mb-6">
           <h2 className="text-2xl font-semibold">Smenalar ro‘yxati</h2>
           <div className="flex gap-4">
