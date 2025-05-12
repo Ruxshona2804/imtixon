@@ -76,10 +76,10 @@ const UserData = () => {
         <Saudbar />
       </div>
 
-      {/* Main content */}
+  
       <div className="w-[75%] flex flex-col items-center gap-6 p-6">
 
-        {/* Welcome block */}
+      
         <div className="relative w-full rounded-xl overflow-hidden">
           <Image src={main} alt="main" className=" object-cover rounded-xl" />
           <div className="absolute top-6 left-6 flex items-center gap-4  bg-opacity-90 p-4 rounded-xl">
@@ -94,10 +94,10 @@ const UserData = () => {
           </div>
         </div>
 
-        {/* Info cards */}
+        
         <div className="flex gap-20 w-full">
 
-          {/* User info card */}
+          
           <div className="bg-white w-[300px] p-6 rounded-xl shadow-md border-l-4 border-blue-500">
             <h3 className="text-xl font-semibold text-blue-600 mb-4">Ma'lumotlar</h3>
             <p className="mb-2"><span className="font-medium text-gray-700">Telefon:</span> {userData?.phone_number}</p>
@@ -106,7 +106,7 @@ const UserData = () => {
             <p><span className="font-medium text-gray-700">Jinsi:</span> {userData?.gender}</p>
           </div>
 
-          {/* Company info card */}
+          
           <div className="bg-white w-[300px] p-6 rounded-xl shadow-md border-l-4 border-green-500">
             <h3 className="text-xl font-semibold text-green-600 mb-4">Kompaniya</h3>
             <p className="mb-2"><span className="font-medium text-gray-700">Nomi:</span> {userCompany?.name}</p>

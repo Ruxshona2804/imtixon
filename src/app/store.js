@@ -1,4 +1,4 @@
-// app/store.js
+
 import { configureStore } from '@reduxjs/toolkit';
 import companyReducer from '../features/company/companySlice';
 

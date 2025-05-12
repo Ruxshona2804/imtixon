@@ -8,7 +8,7 @@ const Mijozlar = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(''); // State for the search term
+  const [searchTerm, setSearchTerm] = useState(''); 
 
   const fetchEmployees = async () => {
     try {
@@ -51,9 +51,8 @@ const Mijozlar = () => {
         <Saidbar />
       </div>
 
-      {/* Main Content */}
+  
       <div className="w-[70%] p-6 space-y-6">
-        {/* Header */}
         <div className="flex justify-between items-center gap-4 flex-wrap">
           <h2 className="text-3xl font-bold text-gray-800">Mijozlar ro'yxati</h2>
           <div className='flex items-center gap-5'>
@@ -71,7 +70,7 @@ const Mijozlar = () => {
           </div>
         </div>
 
-        {/* Card List */}
+      
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredEmployees.map((emp) => (
             <div

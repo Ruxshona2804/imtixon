@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompany } from '../features/company/companySlice';
 import Saidbar from './Saidbar';
+import { Link } from 'react-router-dom';
 
 const CompanyInfo = ({ branches, onBranchChange }) => {
   return (
@@ -94,12 +95,12 @@ const EmployeeList = () => {
       <div className="w-[70%] p-6">
         <div className="flex justify-between items-center gap-3 mb-4">
           <h2 className="text-2xl font-semibold">Xodimlar ro'yxati</h2>
-         <div className='flex items-center gap-4'>
-         <CompanyInfo branches={branches} onBranchChange={handleBranchChange} />
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
-            + Xodim qo‘shish
-          </button>
-         </div>
+          <div className='flex items-center gap-4'>
+            <CompanyInfo branches={branches} onBranchChange={handleBranchChange} />
+            <Link to={"/xodim_qushish"} className="flex items-center gap-2"
+            ><button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                + Xodim qo‘shish
+              </button></Link>         </div>
         </div>
 
         <div className="overflow-x-auto bg-white rounded-lg shadow-md">

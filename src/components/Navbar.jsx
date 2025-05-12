@@ -44,12 +44,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-      {/* Logo */}
       <div className="flex items-center gap-4">
         <img src={logo} alt="logo" className="h-10" />
       </div>
 
-      {/* Search Input */}
       <div className="flex-grow max-w-md mx-4">
         <div className="relative">
           <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
@@ -65,14 +63,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* User Info */}
+
       <div className="flex items-center gap-4">
-        {/* Avatar initials */}
+
         <div className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-full font-semibold shadow-md">
           {userData.full_name?.slice(0, 2).toUpperCase()}
         </div>
-
-        {/* Name and role */}
         <div className="text-right">
           <p className="font-semibold text-gray-800">{userData.full_name}</p>
           <p className="text-sm text-gray-500">{userData.role}</p>

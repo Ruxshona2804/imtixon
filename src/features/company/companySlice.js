@@ -23,7 +23,7 @@ export const fetchCompany = createAsyncThunk(
   }
 );
 
-// ✅ создаём Slice
+
 const companySlice = createSlice({
   name: 'company',
   initialState: {
@@ -49,5 +49,5 @@ const companySlice = createSlice({
   },
 });
 
-// ✅ экспортируем редьюсер по умолчанию
+
 export default companySlice.reducer;

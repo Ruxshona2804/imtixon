@@ -13,6 +13,7 @@ import Smenalar from './components/Smenalar.jsx';
 import { Provider } from 'react-redux';
 import store from './app/store.js';
 import Xodim_qushish from './components/Xodim_qushish.jsx';
+import AddShift from './components/AddShift.jsx';
 
 // Layout-компонент с Navbar
 const Layout = ({ children }) => (
@@ -36,6 +37,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/mijozlar' element={<Layout><Mijozlar /></Layout>} />
           <Route path='/bulimlar' element={<Layout><Bulimlar /></Layout>} />
           <Route path='/smenalar' element={<Layout><Smenalar /></Layout>} />
+          <Route path='/smena_qushish' element={<Layout><AddShift /></Layout>} />
+
         </Routes>
       </BrowserRouter>
     </Provider>
